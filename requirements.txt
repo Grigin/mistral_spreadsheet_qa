@@ -1,0 +1,7 @@
+vllm
+transformers
+huggingface
+gradio
+beautifulsoup4
+langchain
+
