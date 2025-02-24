@@ -6,15 +6,15 @@ This repository contains code for an exploration of using Mistral open-source mo
 
 It consists of three parts:
 
-- **`app.py`** - Script that runs the GUI app.
-- **`mistral_inference.py`** - All the inference-side functions are here.
-- **`html_imaging_functions.py`** - All the logic for processing spreadsheets and extracting data from them.
+- **`app.py`** - Script that runs the app.
+- **`model_interaction.py`** - Logic for OpenAI wrapper, RefineChain processing using Langchain and local tokenization.
+- **`html_imaging_functions.py`** - All the logic for processing spreadsheets in HTML and extracting data from them.
 
 ## Getting Started
 
 If you want to have a go at running the app, please follow these steps:
 
-# 1️⃣ Setup
+# 1️⃣ Setup & Installation
 
 ### Set up Miniconda:
 
@@ -22,18 +22,6 @@ If you want to have a go at running the app, please follow these steps:
 
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-```
-
-#### On Mac:
-
-##### M-series:
-```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -O ~/miniconda.sh
-```
-
-##### Intel:
-```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 ```
 
 ### Install Miniconda
@@ -62,3 +50,51 @@ conda create --name spreadsheets-qa python=3.11
 conda activate spreadsheets-qa
 pip install -r requirements.txt
 ```
+# 2️⃣ Inference Server 
+
+⚠️ **Please create a new tmux session for the next few steps**
+```shell
+tmux new -s "inference-sever"
+```
+#### In your new tmux sesh:
+
+### Activate the conda env
+```shell
+conda activate spreadsheets-qa
+```
+
+### Authenticate on the HuggingFace Hub using your access token $HF_TOKEN:
+
+```shell
+huggingface-cli login --token $HF_TOKEN
+```
+
+### Start the inference server:
+
+```shell
+vllm serve mistralai/Mistral-Nemo-Instruct-2407 \
+  --tokenizer_mode mistral \
+  --config_format mistral \
+  --load_format mistral
+```
+
+#### When the vllm server fires up at 0.0.0.0:8000
+#### Exit tmux session:
+`Ctrl` + `B` + `D`
+
+# 3️⃣ Launch
+
+### Run the app 
+⚠️ **Please make sure that your conda env is activated**
+```shell
+python app.py
+```
+
+### Open the app using local link provided or temporal public link
+
+
+
+
+
+
+
