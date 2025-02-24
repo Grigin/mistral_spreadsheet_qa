@@ -7,8 +7,8 @@ This repository contains code for an exploration of using Mistral open-source mo
 It consists of three parts:
 
 - **`app.py`** - Script that runs the app.
-- **`helpers.py`** - Helper functions for prompt tokenization length check and spreadsheet reading.
-- **`html_imaging_functions.py`** - All the logic for processing spreadsheets and extracting data from them.
+- **`model_interaction.py`** - Logic for OpenAI wrapper, RefineChain processing using Langchain and local tokenization.
+- **`html_imaging_functions.py`** - All the logic for processing spreadsheets in HTML and extracting data from them.
 
 ## Getting Started
 
@@ -54,9 +54,9 @@ pip install -r requirements.txt
 
 ⚠️ **Please create a new tmux session for the next few steps**
 ```shell
-    tmux new -s "inference-sever"
+tmux new -s "inference-sever"
 ```
-## In your new tmux sesh:
+#### In your new tmux sesh:
 
 ### Activate the conda env
 ```shell
@@ -77,3 +77,24 @@ vllm serve mistralai/Mistral-Nemo-Instruct-2407 \
   --config_format mistral \
   --load_format mistral
 ```
+
+#### When the vllm server fires up at 0.0.0.0:8000
+#### Exit tmux session:
+`Ctrl` + `B` + `D`
+
+# 3️⃣ Launch
+
+### Run the app 
+⚠️ **Please make sure that your conda env is activated**
+```shell
+python app.py
+```
+
+### Open the app using local link provided or temporal public link
+
+
+
+
+
+
+
