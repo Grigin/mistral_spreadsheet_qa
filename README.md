@@ -6,8 +6,8 @@ This repository contains code for an exploration of using Mistral open-source mo
 
 It consists of three parts:
 
-- **`app.py`** - Script that runs the GUI app.
-- **`mistral_inference.py`** - All the inference-side functions are here.
+- **`app.py`** - Script that runs the app.
+- **`helpers.py`** - Helper functions for prompt tokenization length check and spreadsheet reading.
 - **`html_imaging_functions.py`** - All the logic for processing spreadsheets and extracting data from them.
 
 ## Getting Started
