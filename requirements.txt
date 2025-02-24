@@ -8,4 +8,7 @@ torch
 mistral-common
 tiktoken
 langchain
+langchain-core
+langchain-community
+langchain-openai
 

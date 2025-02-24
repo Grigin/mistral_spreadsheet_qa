@@ -58,6 +58,11 @@ pip install -r requirements.txt
 ```
 ## In your new tmux sesh:
 
+### Activate the conda env
+```shell
+conda activate spreadsheets-qa
+```
+
 ### Authenticate on the HuggingFace Hub using your access token $HF_TOKEN:
 
 ```shell
