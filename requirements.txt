@@ -1,0 +1,11 @@
+vllm
+transformers
+huggingface
+gradio
+beautifulsoup4
+cssbeautifier
+torch
+mistral-common
+tiktoken
+langchain
+
