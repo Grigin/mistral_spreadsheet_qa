@@ -54,7 +54,7 @@ pip install -r requirements.txt
 
 ⚠️ **Please create a new tmux session for the next few steps**
 ```shell
-tmux new -s "inference-sever"
+tmux new -s "inference-server"
 ```
 #### In your new tmux sesh:
 
@@ -91,6 +91,36 @@ python app.py
 ```
 
 ### Open the app using local link provided or temporal public link
+
+# 4️⃣ How to use
+
+#### 1. Select a spreadsheet to ask questions about from the three pre-uploaded (truncated) ones
++ Titanic https://www.kaggle.com/c/titanic/data (train.csv)
++ Wine Quality https://archive.ics.uci.edu/dataset/186/wine+quality?ref=hackernoon.com (winequality-red.csv)
++ Amazon Bestsellers data https://www.kaggle.com/datasets/sootersaalu/amazon-top-50-bestselling-books-2009-2019/ (bestsellers with categories.csv)
+
+### OR
+
+#### 1. Upload your own one (in .HTML format)
+The spreadsheet parser only works with .html spreadsheets downloaded from Google Sheets.
+To prepare your data in that way, please import your custom spreadsheet to Google Sheets.
+Then go to: File -> Download -> Web page (.html)
+
+#### You can play around with QA on spreadsheets using two modes (on two different tabs).
+### Chat mode: 
+
+The size of spreadsheet is limited (approx 450-500 rows max. because of the context window limitations) 
+and the model tries to answer questions based on the whole spreadsheet. Faster and less factually precise.
+
+### RefineChain mode:
+
+No limitation on the size of the spreadsheet. Uses refine-chain approach to feed itself a spreadsheet splitted into chunks
+of N rows (feel free to experiment with different chunk sizes) and with each new discovered chunk decides whether to alter the 
+answer or stick to the current one.
+
+#### 2. Type a question in the "Question" textbox
+#### 3. Press "Submit" button
+#### 4. Have fun =)
 
 
 
