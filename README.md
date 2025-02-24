@@ -14,7 +14,7 @@ It consists of three parts:
 
 If you want to have a go at running the app, please follow these steps:
 
-# 1️⃣ Setup
+# 1️⃣ Setup & Installation
 
 ### Set up Miniconda:
 
@@ -22,18 +22,6 @@ If you want to have a go at running the app, please follow these steps:
 
 ```shell
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-```
-
-#### On Mac:
-
-##### M-series:
-```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -O ~/miniconda.sh
-```
-
-##### Intel:
-```shell
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
 ```
 
 ### Install Miniconda
@@ -61,4 +49,26 @@ source ~/.bashrc
 conda create --name spreadsheets-qa python=3.11
 conda activate spreadsheets-qa
 pip install -r requirements.txt
+```
+# 2️⃣ Inference Server 
+
+⚠️ **Please create a new tmux session for the next few steps**
+```shell
+    tmux new -s "inference-sever"
+```
+## In your new tmux sesh:
+
+### Authenticate on the HuggingFace Hub using your access token $HF_TOKEN:
+
+```shell
+huggingface-cli login --token $HF_TOKEN
+```
+
+### Start the inference server:
+
+```shell
+vllm serve mistralai/Mistral-Nemo-Instruct-2407 \
+  --tokenizer_mode mistral \
+  --config_format mistral \
+  --load_format mistral
 ```

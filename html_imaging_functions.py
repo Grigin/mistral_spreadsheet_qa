@@ -1,7 +1,4 @@
 from bs4 import BeautifulSoup
-import cssbeautifier
-import re
-
 
 def remove_empty_rows_from_html(html_content):
     soup = BeautifulSoup(html_content, 'html.parser')
